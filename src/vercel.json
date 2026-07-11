@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/Sameh_El-Hosary_CV.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        }
+      ]
+    }
+  ]
+}
