@@ -61,7 +61,7 @@ const Contact = () => {
             >
               🔗{" "}
               <a
-                href="https://www.linkedin.com/in/sameh-el-hosary-024a2230b"
+                href="https://www.www.linkedin.com/in/sameh-el-hosary-"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-300 hover:text-white transition"
