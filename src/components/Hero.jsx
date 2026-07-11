@@ -61,8 +61,8 @@ function Hero() {
 
             <motion.a
               whileHover={{ scale: 1.08 }}
-              href="/Sameh_El-Hosary_CV.pdf"
-              download="Sameh_El-Hosary_CV.pdf"
+              href="/Sameh_El_Hosary_CV.pdf"
+              download="Sameh_El_Hosary_CV.pdf"
               className="border border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-600 transition"
             >
               Download CV
