@@ -3,53 +3,53 @@ import { motion } from "framer-motion";
 const Projects = () => {
 
   const projects = [
-    {
-      title: "Retail Sales Profitability Dashboard",
-      image: "/projects/elaraby-dashboard-overview.png",
-      description:
-        "Interactive Power BI dashboard analyzing sales performance, profitability, product trends, and business insights to support data-driven decisions.",
-      tools: "Power BI | DAX | Power Query | Data Analysis",
-      dashboard: "#",
-      github:
-        "https://github.com/SamehElhosary0/retail-sales-profitability-dashboard",
-    },
-    {
-      title: "Amazon Sales Analysis Dashboard",
-      image: "/projects/amazon-dashboard.png",
-      description:
-        "Amazon sales analysis dashboard providing insights about sales performance, product trends, and key business metrics.",
-      tools: "Power BI | DAX | Power Query | Data Analysis",
-      dashboard: "#",
-      github: "https://github.com/SamehElhosary0/E-Commerce-Analytics-Dashboard-Amazon-",
-    },
-    {
-      title: "WE Telecom Dashboard",
-      image: "/projects/we-dashboard.png",
-      description:
-        "WE Telecom dashboard analyzing business performance, customer insights, and important KPIs to support decision making.",
-      tools: "Power BI | DAX | Power Query | Data Modeling",
-      dashboard: "#",
-      github: "https://github.com/SamehElhosary0/WE-Telecom-Executive-Dashboard.",
-    },
-    {
-      title: "HR Analytics Dashboard - Power BI",
-      image: "/projects/hr-dashboard.png",
-      description:
-        "HR analytics dashboard providing insights about employees, attendance, departments performance, and workforce trends.",
-      tools: "Power BI | DAX | Power Query",
-      dashboard: "#",
-      github: "https://github.com/SamehElhosary0/HR-Analytics-Dashboard",
-    },
-    {
-      title: "Summary Sales Dashboard",
-      image: "/projects/sales-dashboard.png",
-      description:
-        "4-page Power BI dashboard with bookmark-driven navigation, tracking sales, profit, and customer performance across regions and product categories.",
-      tools: "Power BI | DAX | Power Query | Bookmarks",
-      dashboard: "#",
-      github: "https://github.com/SamehElhosary0/Summary-Sales-Dashboard",
-    },
-  ];
+  {
+    title: "WE Telecom Dashboard",
+    image: "/projects/we-dashboard.png",
+    description:
+      "WE Telecom dashboard analyzing business performance, customer insights, and important KPIs to support decision making.",
+    tools: "Power BI | DAX | Power Query | Data Modeling",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/WE-Telecom-Executive-Dashboard.",
+  },
+  {
+    title: "Amazon Sales Analysis Dashboard",
+    image: "/projects/amazon-dashboard.png",
+    description:
+      "Amazon sales analysis dashboard providing insights about sales performance, product trends, and key business metrics.",
+    tools: "Power BI | DAX | Power Query | Data Analysis",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/E-Commerce-Analytics-Dashboard-Amazon-",
+  },
+  {
+    title: "HR Analytics Dashboard - Power BI",
+    image: "/projects/hr-dashboard.png",
+    description:
+      "HR analytics dashboard providing insights about employees, attendance, departments performance, and workforce trends.",
+    tools: "Power BI | DAX | Power Query",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/HR-Analytics-Dashboard",
+  },
+  {
+    title: "Retail Sales Profitability Dashboard",
+    image: "/projects/elaraby-dashboard-overview.png",
+    description:
+      "Interactive Power BI dashboard analyzing sales performance, profitability, product trends, and business insights to support data-driven decisions.",
+    tools: "Power BI | DAX | Power Query | Data Analysis",
+    dashboard: "#",
+    github:
+      "https://github.com/SamehElhosary0/retail-sales-profitability-dashboard",
+  },
+  {
+    title: "Summary Sales Dashboard",
+    image: "/projects/sales-dashboard.png",
+    description:
+      "4-page Power BI dashboard with bookmark-driven navigation, tracking sales, profit, and customer performance across regions and product categories.",
+    tools: "Power BI | DAX | Power Query | Bookmarks",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/Summary-Sales-Dashboard",
+  },
+];
 
 
   return (
