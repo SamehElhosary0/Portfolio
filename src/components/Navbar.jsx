@@ -9,7 +9,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="w-full py-6 px-8 flex justify-end items-center fixed top-0 left-0 z-50 backdrop-blur-md bg-[#08122f]/40 border-b border-blue-500/10">
+    <nav className="w-full py-6 px-8 flex justify-start items-center fixed top-0 left-0 z-50 backdrop-blur-md bg-[#08122f]/40 border-b border-blue-500/10">
 
       <div className="flex gap-8">
 
