@@ -27,7 +27,7 @@ function About() {
         >
 
 
-          <h2 className="text-4xl font-bold text-center mb-8 text-blue-200">
+          <h2 className="heading-hover text-4xl font-bold text-center mb-8 text-blue-200">
             About Me
           </h2>
 

@@ -78,6 +78,7 @@ const Projects = () => {
 
 
           <h2 className="
+          heading-hover
           text-4xl
           font-bold
           text-center

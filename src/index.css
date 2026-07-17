@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @import "tailwindcss";
 
@@ -9,8 +9,46 @@ html{
 body{
     margin:0;
     padding:0;
-    font-family: "Sora", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     background:#08122f;
     color:white;
     overflow-x:hidden;
+}
+
+h1, h2, h3{
+    font-family: "Space Mono", monospace;
+    letter-spacing: -0.01em;
+}
+
+/* Animated page background */
+.animated-bg{
+    background: linear-gradient(
+        -45deg,
+        #020617,
+        #0b1a3d,
+        #08122f,
+        #06213f,
+        #0f172a
+    );
+    background-size: 400% 400%;
+    animation: gradientFlow 18s ease infinite;
+}
+
+@keyframes gradientFlow{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+
+/* Cursor pointer + hover effect for main headings */
+.heading-hover{
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    
+}
+
+.heading-hover:hover{
+    color: #67e8f9;
+    transform: scale(1.05);
+    text-shadow: 0 0 18px rgba(103, 232, 249, 0.5);
 }

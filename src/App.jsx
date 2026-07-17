@@ -6,6 +6,8 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Background from "./components/Background";
+import NetworkBackground from "./components/NetworkBackground";
 
 
 function App() {
@@ -71,13 +73,14 @@ function App() {
       text-white
       relative
       overflow-hidden
-      bg-gradient-to-br
-      from-slate-950
-      via-blue-950
-      to-slate-900
       "
     >
 
+      {/* Animated Network Background (matches profile photo style) */}
+      <NetworkBackground />
+
+      {/* Animated Glows & Floating Particles */}
+      <Background />
 
       {/* Dashboard Background */}
 

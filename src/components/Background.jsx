@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#08122f]">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
       {/* Glow 1 */}
       <motion.div
