@@ -44,7 +44,6 @@ h1, h2, h3{
 .heading-hover{
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-    
 }
 
 .heading-hover:hover{
