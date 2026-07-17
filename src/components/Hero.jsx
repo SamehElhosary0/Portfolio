@@ -90,7 +90,7 @@ function Hero() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-72 h-72 rounded-full bg-blue-950/30 backdrop-blur-sm border-4 border-blue-400/70 flex items-center justify-center shadow-lg shadow-blue-500/40 overflow-hidden"
+            className="w-72 h-72 rounded-full bg-gradient-to-br from-[#061225] via-[#0a1f3d] to-[#071a30] border-4 border-blue-400/70 flex items-center justify-center shadow-lg shadow-blue-500/40 overflow-hidden"
           >
 
             <img
