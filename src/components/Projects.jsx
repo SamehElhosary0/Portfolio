@@ -31,6 +31,15 @@ const Projects = () => {
     github: "https://github.com/SamehElhosary0/Jumia-Performance-Dashboard",
   },
   {
+    title: "Bosta Supply Chain Intelligence Dashboard",
+    image: "/projects/bosta-dashboard.png",
+    description:
+      "Power BI dashboard analyzing ~1M shipment orders for an Egyptian logistics company, covering fees, costs, carrier performance, and regional trends.",
+    tools: "Power BI | DAX | Power Query | Python (Data Cleaning)",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/Bosta-Supply-Chain-Dashboard",
+  },
+  {
     title: "HR Analytics Dashboard - Power BI",
     image: "/projects/hr-dashboard.png",
     description:
@@ -48,15 +57,6 @@ const Projects = () => {
     dashboard: "#",
     github:
       "https://github.com/SamehElhosary0/retail-sales-profitability-dashboard",
-  },
-  {
-    title: "Summary Sales Dashboard",
-    image: "/projects/sales-dashboard.png",
-    description:
-      "4-page Power BI dashboard with bookmark-driven navigation, tracking sales, profit, and customer performance across regions and product categories.",
-    tools: "Power BI | DAX | Power Query | Bookmarks",
-    dashboard: "#",
-    github: "https://github.com/SamehElhosary0/Summary-Sales-Dashboard",
   },
 ];
 
