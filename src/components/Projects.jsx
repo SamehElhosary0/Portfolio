@@ -22,6 +22,15 @@ const Projects = () => {
     github: "https://github.com/SamehElhosary0/E-Commerce-Analytics-Dashboard-Amazon-",
   },
   {
+    title: "Jumia Performance Dashboard",
+    image: "/projects/jumia-dashboard.png",
+    description:
+      "Comprehensive e-commerce analytics dashboard tracking sales, profitability, regional performance, and monthly trends to support business decisions.",
+    tools: "Power BI | DAX | Power Query | Star Schema",
+    dashboard: "#",
+    github: "https://github.com/SamehElhosary0/Jumia-Performance-Dashboard",
+  },
+  {
     title: "HR Analytics Dashboard - Power BI",
     image: "/projects/hr-dashboard.png",
     description:
