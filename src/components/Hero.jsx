@@ -24,7 +24,7 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="heading-hover text-2xl md:text-3xl text-blue-300 mb-6"
+            className="heading-hover text-2xl md:text-3xl text-lime-300 mb-6"
           >
             Data Analyst | Business Intelligence Analyst
           </motion.h2>
@@ -38,13 +38,13 @@ function Hero() {
           </p>
 
 
-          <div className="flex gap-4 mt-8 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
 
 
             <motion.a
               whileHover={{ scale: 1.08 }}
               href="#projects"
-              className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+              className="bg-lime-600 px-6 py-3 rounded-lg hover:bg-lime-500 hover:text-black transition text-black font-semibold"
             >
               View Projects
             </motion.a>
@@ -53,7 +53,7 @@ function Hero() {
             <motion.a
               whileHover={{ scale: 1.08 }}
               href="#contact"
-              className="border border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+              className="border border-lime-400 px-6 py-3 rounded-lg hover:bg-lime-600 hover:text-black transition"
             >
               Contact Me
             </motion.a>
@@ -63,7 +63,7 @@ function Hero() {
               whileHover={{ scale: 1.08 }}
               href="/Sameh_El_Hosary_CV.pdf"
               download
-              className="border border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+              className="border border-lime-400 px-6 py-3 rounded-lg hover:bg-lime-600 hover:text-black transition"
             >
               Download CV
             </motion.a>
@@ -90,7 +90,7 @@ function Hero() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-72 h-72 rounded-full bg-gradient-to-br from-[#061225] via-[#0a1f3d] to-[#071a30] border-4 border-blue-400/70 flex items-center justify-center shadow-lg shadow-blue-500/40 overflow-hidden"
+            className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full bg-gradient-to-br from-[#061225] via-[#0a1f3d] to-[#071a30] border-4 border-lime-400/70 flex items-center justify-center shadow-lg shadow-lime-500/40 overflow-hidden"
           >
 
             <img

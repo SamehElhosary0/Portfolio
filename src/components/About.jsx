@@ -17,17 +17,17 @@ function About() {
           bg-blue-950/50
           backdrop-blur-lg
           border
-          border-blue-400/30
+          border-sky-400/30
           rounded-3xl
           p-10
           shadow-xl
-          hover:shadow-blue-500/30
+          hover:shadow-sky-500/30
           transition
           "
         >
 
 
-          <h2 className="heading-hover text-4xl font-bold text-center mb-8 text-blue-200">
+          <h2 className="heading-hover text-4xl font-bold text-center mb-8 text-sky-200">
             About Me
           </h2>
 
@@ -55,7 +55,7 @@ function About() {
 
 
             <div className="bg-blue-900/40 rounded-xl p-5 text-center">
-              <h3 className="text-3xl font-bold text-blue-300">
+              <h3 className="text-3xl font-bold text-sky-300">
                 10+
               </h3>
               <p className="text-gray-300">
@@ -65,7 +65,7 @@ function About() {
 
 
             <div className="bg-blue-900/40 rounded-xl p-5 text-center">
-              <h3 className="text-3xl font-bold text-blue-300">
+              <h3 className="text-3xl font-bold text-sky-300">
                 55
               </h3>
               <p className="text-gray-300">
@@ -75,7 +75,7 @@ function About() {
 
 
             <div className="bg-blue-900/40 rounded-xl p-5 text-center">
-              <h3 className="text-3xl font-bold text-blue-300">
+              <h3 className="text-3xl font-bold text-sky-300">
                 10+
               </h3>
               <p className="text-gray-300">
@@ -91,7 +91,7 @@ function About() {
           mt-10
           bg-blue-900/40
           border
-          border-blue-400/20
+          border-sky-400/20
           rounded-2xl
           p-8
           flex
@@ -103,7 +103,7 @@ function About() {
           >
 
             <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold text-blue-300 mb-2">
+              <h3 className="text-2xl font-bold text-sky-300 mb-2">
                 🚀 Career Launch Camp
               </h3>
               <p className="text-gray-300 leading-7">
@@ -122,12 +122,12 @@ function About() {
               download
               className="
               shrink-0
-              bg-blue-600
+              bg-sky-600
               px-6
               py-3
               rounded-lg
               font-semibold
-              hover:bg-blue-700
+              hover:bg-sky-500
               transition
               whitespace-nowrap
               "

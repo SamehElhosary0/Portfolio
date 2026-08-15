@@ -11,6 +11,9 @@ const Projects = () => {
     tools: "Power BI | DAX | Power Query | Data Modeling",
     dashboard: "#",
     github: "https://github.com/SamehElhosary0/WE-Telecom-Executive-Dashboard.",
+    cardBg: "from-blue-950/70 to-indigo-950/50",
+    cardBorder: "border-indigo-400/25",
+    cardShadow: "hover:shadow-indigo-500/30",
   },
   {
     title: "Amazon Sales Analysis Dashboard",
@@ -20,6 +23,9 @@ const Projects = () => {
     tools: "Power BI | DAX | Power Query | Data Analysis",
     dashboard: "#",
     github: "https://github.com/SamehElhosary0/E-Commerce-Analytics-Dashboard-Amazon-",
+    cardBg: "from-blue-950/70 to-cyan-950/50",
+    cardBorder: "border-cyan-400/25",
+    cardShadow: "hover:shadow-cyan-500/30",
   },
   {
     title: "Jumia Performance Dashboard",
@@ -29,6 +35,9 @@ const Projects = () => {
     tools: "Power BI | DAX | Power Query | Star Schema",
     dashboard: "#",
     github: "https://github.com/SamehElhosary0/Jumia-Performance-Dashboard",
+    cardBg: "from-blue-950/70 to-violet-950/50",
+    cardBorder: "border-violet-400/25",
+    cardShadow: "hover:shadow-violet-500/30",
   },
   {
     title: "Bosta Supply Chain Intelligence Dashboard",
@@ -38,6 +47,9 @@ const Projects = () => {
     tools: "Power BI | DAX | Power Query | Python (Data Cleaning)",
     dashboard: "#",
     github: "https://github.com/SamehElhosary0/Bosta-Supply-Chain-Dashboard",
+    cardBg: "from-blue-950/70 to-teal-950/50",
+    cardBorder: "border-teal-400/25",
+    cardShadow: "hover:shadow-teal-500/30",
   },
   {
     title: "HR Analytics Dashboard - Power BI",
@@ -47,6 +59,9 @@ const Projects = () => {
     tools: "Power BI | DAX | Power Query",
     dashboard: "#",
     github: "https://github.com/SamehElhosary0/HR-Analytics-Dashboard",
+    cardBg: "from-blue-950/70 to-sky-950/50",
+    cardBorder: "border-sky-400/25",
+    cardShadow: "hover:shadow-sky-500/30",
   },
   {
     title: "Retail Sales Profitability Dashboard",
@@ -57,6 +72,9 @@ const Projects = () => {
     dashboard: "#",
     github:
       "https://github.com/SamehElhosary0/retail-sales-profitability-dashboard",
+    cardBg: "from-blue-950/70 to-fuchsia-950/50",
+    cardBorder: "border-fuchsia-400/25",
+    cardShadow: "hover:shadow-fuchsia-500/30",
   },
 ];
 
@@ -78,7 +96,7 @@ const Projects = () => {
           bg-blue-950/40
           backdrop-blur-lg
           border
-          border-blue-400/30
+          border-violet-400/30
           rounded-3xl
           p-10
           shadow-xl
@@ -92,7 +110,7 @@ const Projects = () => {
           font-bold
           text-center
           mb-12
-          text-blue-200
+          text-violet-200
           ">
             Featured Projects
           </h2>
@@ -132,24 +150,25 @@ const Projects = () => {
                   y: -10
                 }}
 
-                className="
-                bg-blue-900/50
+                className={`
+                bg-gradient-to-br
+                ${project.cardBg}
                 backdrop-blur-lg
                 border
-                border-blue-400/20
+                ${project.cardBorder}
                 rounded-xl
                 overflow-hidden
                 shadow-lg
-                hover:shadow-blue-500/40
+                ${project.cardShadow}
                 transition
-                "
+                `}
               >
 
 
                 {project.comingSoon ? (
                   <div className="w-full h-48 flex flex-col items-center justify-center gap-2 bg-blue-950/60">
                     <span className="text-3xl">📊</span>
-                    <span className="text-blue-300 text-sm font-semibold tracking-wide">
+                    <span className="text-violet-300 text-sm font-semibold tracking-wide">
                       Coming Soon
                     </span>
                   </div>
@@ -170,7 +189,7 @@ const Projects = () => {
                   text-xl
                   font-bold
                   mb-3
-                  text-blue-300
+                  text-violet-300
                   ">
                     {project.title}
                   </h3>
@@ -188,7 +207,7 @@ const Projects = () => {
 
 
                   <p className="
-                  text-blue-200
+                  text-violet-200
                   font-semibold
                   mb-5
                   ">
@@ -203,8 +222,8 @@ const Projects = () => {
                       <span
                         className="
                         border
-                        border-blue-300/40
-                        text-blue-300/70
+                        border-violet-300/40
+                        text-violet-300/70
                         px-4
                         py-2
                         rounded-lg
@@ -223,11 +242,11 @@ const Projects = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="
-                            bg-blue-600
+                            bg-violet-600
                             px-4
                             py-2
                             rounded-lg
-                            hover:bg-blue-700
+                            hover:bg-violet-500
                             transition
                             "
                           >
@@ -242,11 +261,11 @@ const Projects = () => {
                             rel="noopener noreferrer"
                             className="
                             border
-                            border-blue-300
+                            border-violet-300
                             px-4
                             py-2
                             rounded-lg
-                            hover:bg-blue-500
+                            hover:bg-violet-500
                             transition
                             "
                           >

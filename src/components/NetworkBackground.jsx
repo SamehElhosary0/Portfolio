@@ -10,7 +10,7 @@ export default function NetworkBackground() {
     let width, height, dpr;
     let nodes = [];
 
-    const ACCENT_COLORS = ["#22d3ee", "#38bdf8", "#60a5fa", "#f97316"];
+    const ACCENT_COLORS = ["#22d3ee", "#38bdf8", "#60a5fa", "#A3E635"];
 
     function resize() {
       dpr = window.devicePixelRatio || 1;

@@ -47,7 +47,7 @@ h1, h2, h3{
 }
 
 .heading-hover:hover{
-    color: #67e8f9;
+    color: #A3E635;
     transform: scale(1.05);
-    text-shadow: 0 0 18px rgba(103, 232, 249, 0.5);
+    text-shadow: 0 0 18px rgba(163, 230, 53, 0.5);
 }

@@ -18,20 +18,20 @@ function Navbar() {
     cursor-pointer
     transition-all
     duration-300
-    hover:text-cyan-400
+    hover:text-lime-400
     after:absolute
     after:left-0
     after:-bottom-1
     after:h-[2px]
     after:w-0
-    after:bg-cyan-400
+    after:bg-lime-400
     after:transition-all
     after:duration-300
     hover:after:w-full
   `;
 
   return (
-    <nav className="w-full py-6 px-8 flex justify-between md:justify-start items-center fixed top-0 left-0 z-50 backdrop-blur-md bg-[#08122f]/40 border-b border-blue-500/10">
+    <nav className="w-full py-6 px-8 flex justify-between md:justify-start items-center fixed top-0 left-0 z-50 backdrop-blur-md bg-[#08122f]/40 border-b border-lime-500/10">
 
       {/* Desktop links */}
       <div className="hidden md:flex gap-8">
@@ -50,7 +50,7 @@ function Navbar() {
 
       {/* Mobile hamburger button */}
       <button
-        className="md:hidden text-cyan-400 z-50"
+        className="md:hidden text-lime-400 z-50"
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
       >
@@ -77,10 +77,11 @@ function Navbar() {
             top-full
             left-0
             w-full
-            bg-[#08122f]/95
+            bg-[#050A1F]
+            shadow-2xl
             backdrop-blur-md
             border-b
-            border-blue-500/10
+            border-lime-500/10
             flex
             flex-col
             gap-6
@@ -93,7 +94,7 @@ function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-gray-300 font-medium hover:text-cyan-400 transition-colors"
+                className="text-gray-300 font-medium hover:text-lime-400 transition-colors"
               >
                 {link.name}
               </a>

@@ -59,7 +59,7 @@ function Skills() {
           bg-blue-950/40
           backdrop-blur-lg
           border
-          border-blue-400/30
+          border-amber-400/30
           rounded-3xl
           p-10
           shadow-xl
@@ -73,7 +73,7 @@ function Skills() {
           font-bold
           text-center
           mb-12
-          text-blue-200
+          text-amber-200
           ">
             Technical Skills
           </h2>
@@ -115,11 +115,11 @@ function Skills() {
                 className="
                 bg-blue-900/50
                 border
-                border-blue-400/20
+                border-amber-400/20
                 rounded-2xl
                 p-6
                 shadow-lg
-                hover:shadow-blue-500/40
+                hover:shadow-amber-500/40
                 transition
                 "
               >
@@ -133,7 +133,7 @@ function Skills() {
                 <h3 className="
                 text-2xl
                 font-bold
-                text-blue-300
+                text-amber-300
                 mb-3
                 ">
                   {skill.title}
