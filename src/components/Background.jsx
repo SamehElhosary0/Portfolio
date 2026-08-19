@@ -15,7 +15,8 @@ export default function Background() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute w-96 h-96 rounded-full bg-cyan-500/10 blur-3xl left-10 top-20"
+        className="absolute w-96 h-96 rounded-full blur-3xl left-10 top-20"
+        style={{ background: "var(--chart-cyan, #22d3ee)", opacity: 0.1 }}
       />
 
       {/* Glow 2 */}
@@ -29,7 +30,8 @@ export default function Background() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute w-80 h-80 rounded-full bg-blue-500/10 blur-3xl right-20 bottom-20"
+        className="absolute w-80 h-80 rounded-full blur-3xl right-20 bottom-20"
+        style={{ background: "var(--chart-blue, #60a5fa)", opacity: 0.1 }}
       />
 
       {/* Floating Dots */}
@@ -44,8 +46,9 @@ export default function Background() {
             duration: 3 + i,
             repeat: Infinity,
           }}
-          className="absolute w-2 h-2 rounded-full bg-cyan-400"
+          className="absolute w-2 h-2 rounded-full"
           style={{
+            background: "var(--chart-cyan, #22d3ee)",
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
@@ -70,9 +73,9 @@ export default function Background() {
             top: `${15 + (i % 4) * 20}%`,
           }}
         >
-          <div className="w-1 h-5 bg-blue-500/40 rounded"></div>
-          <div className="w-1 h-8 bg-blue-400/40 rounded"></div>
-          <div className="w-1 h-4 bg-cyan-400/40 rounded"></div>
+          <div className="w-1 h-5 rounded" style={{ background: "var(--chart-blue, #60a5fa)", opacity: 0.4 }}></div>
+          <div className="w-1 h-8 rounded" style={{ background: "var(--chart-blue-light, #93c5fd)", opacity: 0.4 }}></div>
+          <div className="w-1 h-4 rounded" style={{ background: "var(--chart-cyan, #22d3ee)", opacity: 0.4 }}></div>
         </motion.div>
       ))}
     </div>

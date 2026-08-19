@@ -10,7 +10,15 @@ export default function NetworkBackground() {
     let width, height, dpr;
     let nodes = [];
 
-    const ACCENT_COLORS = ["#22d3ee", "#38bdf8", "#60a5fa", "#A3E635"];
+    function getAccentColors() {
+      const root = getComputedStyle(document.documentElement);
+      return [
+        root.getPropertyValue("--chart-cyan").trim() || "#22d3ee",
+        root.getPropertyValue("--chart-blue").trim() || "#60a5fa",
+        root.getPropertyValue("--chart-blue-light").trim() || "#93c5fd",
+        root.getPropertyValue("--accent").trim() || "#A3E635",
+      ];
+    }
 
     function resize() {
       dpr = window.devicePixelRatio || 1;
@@ -22,6 +30,7 @@ export default function NetworkBackground() {
       canvas.style.height = height + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+      const ACCENT_COLORS = getAccentColors();
       const count = Math.min(90, Math.floor((width * height) / 18000));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
@@ -39,11 +48,17 @@ export default function NetworkBackground() {
     function step() {
       ctx.clearRect(0, 0, width, height);
 
+      const root = getComputedStyle(document.documentElement);
+      const bg1 = root.getPropertyValue("--bg-gradient-1").trim() || "#061225";
+      const bg2 = root.getPropertyValue("--bg-gradient-2").trim() || "#0a1f3d";
+      const bg3 = root.getPropertyValue("--bg-gradient-3").trim() || "#071a30";
+      const lineColor = root.getPropertyValue("--chart-blue").trim() || "#38bdf8";
+
       // background base gradient (matches profile photo tone)
       const grad = ctx.createLinearGradient(0, 0, width, height);
-      grad.addColorStop(0, "#061225");
-      grad.addColorStop(0.5, "#0a1f3d");
-      grad.addColorStop(1, "#071a30");
+      grad.addColorStop(0, bg1);
+      grad.addColorStop(0.5, bg2);
+      grad.addColorStop(1, bg3);
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
@@ -64,7 +79,7 @@ export default function NetworkBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.16 * (1 - dist / maxDist)})`;
+            ctx.strokeStyle = lineColor.replace(")", `, ${0.16 * (1 - dist / maxDist)})`);
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);

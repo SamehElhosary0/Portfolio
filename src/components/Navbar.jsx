@@ -11,28 +11,14 @@ function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
-  const linkClass = `
-    relative
-    text-gray-300
-    font-medium
-    cursor-pointer
-    transition-all
-    duration-300
-    hover:text-lime-400
-    after:absolute
-    after:left-0
-    after:-bottom-1
-    after:h-[2px]
-    after:w-0
-    after:bg-lime-400
-    after:transition-all
-    after:duration-300
-    hover:after:w-full
-  `;
-
   return (
-    <nav className="w-full py-6 px-8 flex justify-between md:justify-start items-center fixed top-0 left-0 z-50 backdrop-blur-md bg-[#08122f]/40 border-b border-lime-500/10">
-
+    <nav
+      className="w-full py-6 px-8 flex justify-between md:justify-start items-center fixed top-0 left-0 z-40 backdrop-blur-md border-b"
+      style={{
+        background: "color-mix(in srgb, var(--bg-primary, #08122f) 40%, transparent)",
+        borderColor: "var(--border-color, rgba(163,230,53,0.1))",
+      }}
+    >
       {/* Desktop links */}
       <div className="hidden md:flex gap-8">
         {links.map((link) => (
@@ -41,8 +27,36 @@ function Navbar() {
             href={link.href}
             whileHover={{ y: -2, scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className={linkClass}
+            className="
+              relative
+              font-medium
+              cursor-pointer
+              transition-all
+              duration-300
+              after:absolute
+              after:left-0
+              after:-bottom-1
+              after:h-[2px]
+              after:w-0
+              after:transition-all
+              after:duration-300
+              hover:after:w-full
+            "
+            style={{ color: "var(--text-muted, #94a3b8)" }}
+            onMouseEnter={(e) => {
+              e.target.style.color = "var(--accent, #A3E635)";
+              const after = e.target.querySelector("::after");
+              if (after) after.style.background = "var(--accent, #A3E635)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = "var(--text-muted, #94a3b8)";
+            }}
           >
+            <style>{`
+              nav a::after {
+                background: var(--accent, #A3E635);
+              }
+            `}</style>
             {link.name}
           </motion.a>
         ))}
@@ -50,7 +64,8 @@ function Navbar() {
 
       {/* Mobile hamburger button */}
       <button
-        className="md:hidden text-lime-400 z-50"
+        className="md:hidden z-50 cursor-pointer"
+        style={{ color: "var(--accent, #A3E635)" }}
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
       >
@@ -71,30 +86,25 @@ function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="
-            md:hidden
-            absolute
-            top-full
-            left-0
-            w-full
-            bg-[#050A1F]
-            shadow-2xl
-            backdrop-blur-md
-            border-b
-            border-lime-500/10
-            flex
-            flex-col
-            gap-6
-            px-8
-            py-6
-            "
+            className="md:hidden absolute top-full left-0 w-full shadow-2xl backdrop-blur-md border-b flex flex-col gap-6 px-8 py-6"
+            style={{
+              background: "var(--bg-primary, #08122f)",
+              borderColor: "var(--border-color, rgba(163,230,53,0.1))",
+            }}
           >
             {links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-gray-300 font-medium hover:text-lime-400 transition-colors"
+                className="font-medium cursor-pointer transition-colors duration-300"
+                style={{ color: "var(--text-muted, #94a3b8)" }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "var(--accent, #A3E635)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "var(--text-muted, #94a3b8)";
+                }}
               >
                 {link.name}
               </a>
@@ -102,7 +112,6 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </nav>
   );
 }

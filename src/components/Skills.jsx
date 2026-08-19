@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
 function Skills() {
-
   const skills = [
     {
       title: "Power BI",
@@ -41,126 +40,70 @@ function Skills() {
     }
   ];
 
-
   return (
-
     <section id="skills" className="py-20">
-
-
       <div className="max-w-6xl mx-auto px-6">
-
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="
-          bg-blue-950/40
-          backdrop-blur-lg
-          border
-          border-amber-400/30
-          rounded-3xl
-          p-10
-          shadow-xl
-          "
+          className="backdrop-blur-lg border rounded-3xl p-10 shadow-xl"
+          style={{
+            background: "var(--bg-secondary, #0b1a3d)",
+            opacity: 0.4,
+            borderColor: "var(--border-color, rgba(163,230,53,0.2))",
+          }}
         >
-
-
-          <h2 className="
-          heading-hover
-          text-4xl
-          font-bold
-          text-center
-          mb-12
-          text-amber-200
-          ">
+          <h2
+            className="heading-hover text-4xl font-bold text-center mb-12"
+            style={{ color: "var(--text-secondary, #e2e8f0)" }}
+          >
             Technical Skills
           </h2>
 
-
           <div className="grid md:grid-cols-3 gap-8">
-
-
             {skills.map((skill, index) => (
-
               <motion.div
-
                 key={index}
-
-                initial={{
-                  opacity: 0,
-                  y: 50
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.08, y: -10 }}
+                viewport={{ once: true }}
+                className="border rounded-2xl p-6 shadow-lg transition"
+                style={{
+                  background: "var(--bg-card, #111827)",
+                  opacity: 0.5,
+                  borderColor: "var(--border-color, rgba(163,230,53,0.2))",
                 }}
-
-                whileInView={{
-                  opacity: 1,
-                  y: 0
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = "0 20px 40px var(--accent-bg, rgba(163,230,53,0.1))";
                 }}
-
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = "none";
                 }}
-
-                whileHover={{
-                  scale: 1.08,
-                  y: -10
-                }}
-
-                viewport={{
-                  once: true
-                }}
-
-                className="
-                bg-blue-900/50
-                border
-                border-amber-400/20
-                rounded-2xl
-                p-6
-                shadow-lg
-                hover:shadow-amber-500/40
-                transition
-                "
               >
-
-
                 <div className="text-4xl mb-4">
                   {skill.icon}
                 </div>
 
-
-                <h3 className="
-                text-2xl
-                font-bold
-                text-amber-300
-                mb-3
-                ">
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{ color: "var(--accent-light, #BEF264)" }}
+                >
                   {skill.title}
                 </h3>
 
-
-                <p className="text-gray-200 leading-7">
+                <p style={{ color: "var(--text-secondary, #e2e8f0)" }}>
                   {skill.description}
                 </p>
-
-
               </motion.div>
-
             ))}
-
-
           </div>
-
-
         </motion.div>
-
-
       </div>
-
-
     </section>
-
   );
 }
 
