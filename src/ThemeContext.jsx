@@ -4,9 +4,18 @@ import { themes } from "./themes";
 
 const ThemeContext = createContext();
 
+// Full length of a theme cycle, in seconds.
+const CYCLE_SECONDS = 30;
+// How many seconds before the cycle ends the crossfade into the next
+// theme should start. Must match the transition duration set on the
+// "* { transition: ... }" rule and the body/.animated-bg backgrounds
+// in index.css, or the fade will finish early/late instead of landing
+// exactly on 0.
+const TRANSITION_LEAD_SECONDS = 5;
+
 export function ThemeProvider({ children }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [secondsLeft, setSecondsLeft] = useState(CYCLE_SECONDS);
 
   useEffect(() => {
     const applyTheme = (index) => {
@@ -22,24 +31,30 @@ export function ThemeProvider({ children }) {
     // Apply initial theme
     applyTheme(currentIndex);
 
-    // Change theme every 30 seconds
-    const themeInterval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const next = (prev + 1) % themes.length;
-        applyTheme(next);
-        return next;
-      });
-    }, 30000);
+    // Single 1-second tick drives both the visible countdown and the
+    // theme swap. Using one interval instead of two independent ones
+    // (a 30s theme-switch timer + a 1s countdown timer) also avoids the
+    // two timers slowly drifting out of sync with each other over time.
+    const tick = setInterval(() => {
+      setSecondsLeft((prev) => {
+        const next = prev - 1;
 
-    // Countdown timer
-    const countdownInterval = setInterval(() => {
-      setSecondsLeft((prev) => (prev <= 1 ? 30 : prev - 1));
+        // Kick off the crossfade into the next theme before the cycle
+        // actually ends, so the color shift completes right as the
+        // countdown hits 0 instead of swapping instantly.
+        if (next === TRANSITION_LEAD_SECONDS) {
+          setCurrentIndex((prevIndex) => {
+            const nextIndex = (prevIndex + 1) % themes.length;
+            applyTheme(nextIndex);
+            return nextIndex;
+          });
+        }
+
+        return next <= 0 ? CYCLE_SECONDS : next;
+      });
     }, 1000);
 
-    return () => {
-      clearInterval(themeInterval);
-      clearInterval(countdownInterval);
-    };
+    return () => clearInterval(tick);
   }, []);
 
   return (

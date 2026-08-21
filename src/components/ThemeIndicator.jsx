@@ -45,7 +45,7 @@ export default function ThemeIndicator() {
       </div>
 
       {/* Progress dots */}
-      <div className="flex gap-1">
+      <div className="hidden md:flex gap-1">
         {themes.map((_, i) => (
           <div
             key={i}

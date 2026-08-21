@@ -3,7 +3,7 @@ import profile from "../assets/profile.png";
 
 function Hero() {
   return (
-    <section className="min-h-[90vh] flex items-center px-6">
+    <section className="min-h-[90vh] flex items-center px-6 pt-20 md:pt-0">
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center">
 
         {/* Text Section */}
