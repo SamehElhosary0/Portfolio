@@ -55,11 +55,11 @@ function Skills() {
             borderColor: "var(--border-color, rgba(163,230,53,0.2))",
           }}
         >
-          <h2
-            className="heading-hover text-4xl font-bold text-center mb-12"
+                    <h2
+            className="text-4xl font-bold text-center mb-12"
             style={{ color: "var(--text-secondary, #e2e8f0)" }}
           >
-            Technical Skills
+            <span className="heading-hover">Technical Skills</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">

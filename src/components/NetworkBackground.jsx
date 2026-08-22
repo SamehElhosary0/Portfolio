@@ -1,7 +1,28 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "../ThemeContext";
+
+function hexToRgb(hex) {
+  const clean = hex.replace("#", "");
+  const bigint = parseInt(clean, 16);
+  return { r: (bigint >> 16) & 255, g: (bigint >> 8) & 255, b: bigint & 255 };
+}
+
+function lerpColor(hexA, hexB, t) {
+  if (hexA === hexB) return hexB;
+  const a = hexToRgb(hexA);
+  const b = hexToRgb(hexB);
+  const r = Math.round(a.r + (b.r - a.r) * t);
+  const g = Math.round(a.g + (b.g - a.g) * t);
+  const bl = Math.round(a.b + (b.b - a.b) * t);
+  return `rgb(${r}, ${g}, ${bl})`;
+}
 
 export default function NetworkBackground() {
   const canvasRef = useRef(null);
+  const { currentIndex, prevIndex, fadeProgress, themes } = useTheme();
+
+  const themeStateRef = useRef({ currentIndex, prevIndex, fadeProgress, themes });
+  themeStateRef.current = { currentIndex, prevIndex, fadeProgress, themes };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -10,14 +31,25 @@ export default function NetworkBackground() {
     let width, height, dpr;
     let nodes = [];
 
-    function getAccentColors() {
-      const root = getComputedStyle(document.documentElement);
-      return [
-        root.getPropertyValue("--chart-cyan").trim() || "#22d3ee",
-        root.getPropertyValue("--chart-blue").trim() || "#60a5fa",
-        root.getPropertyValue("--chart-blue-light").trim() || "#93c5fd",
-        root.getPropertyValue("--accent").trim() || "#A3E635",
-      ];
+    function blendedColors() {
+      const { currentIndex, prevIndex, fadeProgress, themes } = themeStateRef.current;
+      const from = themes[prevIndex];
+      const to = themes[currentIndex];
+      const t = fadeProgress;
+      const pick = (key, fallback) => {
+        const a = from[key] || fallback;
+        const b = to[key] || fallback;
+        return t >= 1 ? b : lerpColor(a, b, t);
+      };
+      return {
+        bg1: pick("--bg-gradient-1", "#061225"),
+        bg2: pick("--bg-gradient-2", "#0a1f3d"),
+        bg3: pick("--bg-gradient-3", "#071a30"),
+        chartCyan: pick("--chart-cyan", "#22d3ee"),
+        chartBlue: pick("--chart-blue", "#60a5fa"),
+        chartBlueLight: pick("--chart-blue-light", "#93c5fd"),
+        accent: pick("--accent", "#A3E635"),
+      };
     }
 
     function resize() {
@@ -30,7 +62,6 @@ export default function NetworkBackground() {
       canvas.style.height = height + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const ACCENT_COLORS = getAccentColors();
       const count = Math.min(90, Math.floor((width * height) / 18000));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
@@ -38,23 +69,15 @@ export default function NetworkBackground() {
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
         r: Math.random() * 1.6 + 0.8,
-        color:
-          Math.random() > 0.93
-            ? ACCENT_COLORS[3]
-            : ACCENT_COLORS[Math.floor(Math.random() * 3)],
+        colorSlot: Math.random() > 0.93 ? 3 : Math.floor(Math.random() * 3),
       }));
     }
 
     function step() {
       ctx.clearRect(0, 0, width, height);
 
-      const root = getComputedStyle(document.documentElement);
-      const bg1 = root.getPropertyValue("--bg-gradient-1").trim() || "#061225";
-      const bg2 = root.getPropertyValue("--bg-gradient-2").trim() || "#0a1f3d";
-      const bg3 = root.getPropertyValue("--bg-gradient-3").trim() || "#071a30";
-      const lineColor = root.getPropertyValue("--chart-blue").trim() || "#38bdf8";
+      const { bg1, bg2, bg3, chartCyan, chartBlue, chartBlueLight, accent } = blendedColors();
 
-      // background base gradient (matches profile photo tone)
       const grad = ctx.createLinearGradient(0, 0, width, height);
       grad.addColorStop(0, bg1);
       grad.addColorStop(0.5, bg2);
@@ -63,6 +86,8 @@ export default function NetworkBackground() {
       ctx.fillRect(0, 0, width, height);
 
       const maxDist = Math.min(160, width / 6);
+      const rgbMatch = chartBlue.match(/\d+/g);
+      const [lr, lg, lb] = rgbMatch ? rgbMatch.map(Number) : [56, 189, 248];
 
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
@@ -79,7 +104,7 @@ export default function NetworkBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            ctx.strokeStyle = lineColor.replace(")", `, ${0.16 * (1 - dist / maxDist)})`);
+            ctx.strokeStyle = `rgba(${lr}, ${lg}, ${lb}, ${0.16 * (1 - dist / maxDist)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -89,10 +114,11 @@ export default function NetworkBackground() {
         }
       }
 
+      const ACCENT_COLORS = [chartCyan, chartBlue, chartBlueLight, accent];
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = n.color;
+        ctx.fillStyle = ACCENT_COLORS[n.colorSlot];
         ctx.globalAlpha = 0.85;
         ctx.fill();
         ctx.globalAlpha = 1;

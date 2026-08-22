@@ -13,18 +13,18 @@ function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center md:text-left"
         >
-          <h1 className="heading-hover text-5xl md:text-6xl font-bold mb-6">
-            Sameh El-Hosary
+                    <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="heading-hover">Sameh El-Hosary</span>
           </h1>
 
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="heading-hover text-2xl md:text-3xl mb-6"
+            className="text-2xl md:text-3xl mb-6"
             style={{ color: "var(--accent-light, #BEF264)" }}
           >
-            Data Analyst | Business Intelligence Analyst
+            <span className="heading-hover">Data Analyst | Business Intelligence Analyst</span>
           </motion.h2>
 
           <p className="text-lg leading-8" style={{ color: "var(--text-secondary, #e2e8f0)" }}>

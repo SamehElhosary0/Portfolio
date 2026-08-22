@@ -42,19 +42,37 @@ h1, h2, h3{
     100%{ background-position: 0% 50%; }
 }
 
-/* Cursor pointer + hover effect for main headings */
+/* Hover "spot": color change on the text plus a soft glow blob behind
+   it. Applied to an inner <span> wrapping the heading text (not the
+   h1/h2 itself) so it doesn't need to fight the inline color style set
+   on the h1/h2 by About/Projects/Skills/Contact, and so the glow blob
+   only covers the words themselves, not the full-width heading box. */
 .heading-hover{
+    position: relative;
+    display: inline-block;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.heading-hover::before{
+    content: "";
+    position: absolute;
+    inset: -14px -22px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at center, var(--accent-bg, rgba(163, 230, 53, 0.35)) 0%, transparent 72%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .heading-hover:hover{
-    /* !important is required here: About/Projects/Skills/Contact set the
-       heading's base color with an inline style, which otherwise always
-       beats this class rule and silently blocks the hover effect. */
     color: var(--accent, #A3E635) !important;
     transform: scale(1.05);
-    text-shadow: 0 0 18px var(--accent-bg, rgba(163, 230, 53, 0.5));
+}
+
+.heading-hover:hover::before{
+    opacity: 1;
 }
 
 /* Smooth transition for all themed elements */

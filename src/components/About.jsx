@@ -21,11 +21,11 @@ function About() {
             e.currentTarget.style.boxShadow = "none";
           }}
         >
-          <h2
-            className="heading-hover text-4xl font-bold text-center mb-8"
+                    <h2
+            className="text-4xl font-bold text-center mb-8"
             style={{ color: "var(--text-primary, #ffffff)" }}
           >
-            About Me
+            <span className="heading-hover">About Me</span>
           </h2>
 
           <p

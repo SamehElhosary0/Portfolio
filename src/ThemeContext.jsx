@@ -1,5 +1,5 @@
 // src/ThemeContext.jsx
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { themes } from "./themes";
 
 const ThemeContext = createContext();
@@ -7,15 +7,22 @@ const ThemeContext = createContext();
 // Full length of a theme cycle, in seconds.
 const CYCLE_SECONDS = 30;
 // How many seconds before the cycle ends the crossfade into the next
-// theme should start. Must match the transition duration set on the
-// "* { transition: ... }" rule and the body/.animated-bg backgrounds
-// in index.css, or the fade will finish early/late instead of landing
-// exactly on 0.
+// theme should start.
 const TRANSITION_LEAD_SECONDS = 5;
+const TRANSITION_MS = TRANSITION_LEAD_SECONDS * 1000;
 
 export function ThemeProvider({ children }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  // The theme we're fading FROM. Only meaningful while fadeProgress < 1.
+  const [prevIndex, setPrevIndex] = useState(0);
+  // 0 -> 1 across the 5s crossfade window, then stays at 1 until the
+  // next crossfade starts. The <canvas> background reads this directly
+  // to interpolate its own colors, since CSS transitions can't animate
+  // canvas pixels.
+  const [fadeProgress, setFadeProgress] = useState(1);
   const [secondsLeft, setSecondsLeft] = useState(CYCLE_SECONDS);
+
+  const fadeStartRef = useRef(null);
 
   useEffect(() => {
     const applyTheme = (index) => {
@@ -28,25 +35,19 @@ export function ThemeProvider({ children }) {
       });
     };
 
-    // Apply initial theme
     applyTheme(currentIndex);
 
-    // Single 1-second tick drives both the visible countdown and the
-    // theme swap. Using one interval instead of two independent ones
-    // (a 30s theme-switch timer + a 1s countdown timer) also avoids the
-    // two timers slowly drifting out of sync with each other over time.
-    const tick = setInterval(() => {
+    const countdownTick = setInterval(() => {
       setSecondsLeft((prev) => {
         const next = prev - 1;
 
-        // Kick off the crossfade into the next theme before the cycle
-        // actually ends, so the color shift completes right as the
-        // countdown hits 0 instead of swapping instantly.
         if (next === TRANSITION_LEAD_SECONDS) {
-          setCurrentIndex((prevIndex) => {
-            const nextIndex = (prevIndex + 1) % themes.length;
-            applyTheme(nextIndex);
-            return nextIndex;
+          setCurrentIndex((prevIdx) => {
+            const nextIdx = (prevIdx + 1) % themes.length;
+            setPrevIndex(prevIdx);
+            fadeStartRef.current = performance.now();
+            applyTheme(nextIdx);
+            return nextIdx;
           });
         }
 
@@ -54,11 +55,31 @@ export function ThemeProvider({ children }) {
       });
     }, 1000);
 
-    return () => clearInterval(tick);
+    let raf;
+    const fadeTick = () => {
+      if (fadeStartRef.current !== null) {
+        const elapsed = performance.now() - fadeStartRef.current;
+        if (elapsed >= TRANSITION_MS) {
+          setFadeProgress(1);
+          fadeStartRef.current = null;
+        } else {
+          setFadeProgress(elapsed / TRANSITION_MS);
+        }
+      }
+      raf = requestAnimationFrame(fadeTick);
+    };
+    raf = requestAnimationFrame(fadeTick);
+
+    return () => {
+      clearInterval(countdownTick);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ currentIndex, secondsLeft, themes }}>
+    <ThemeContext.Provider
+      value={{ currentIndex, prevIndex, fadeProgress, secondsLeft, themes }}
+    >
       {children}
     </ThemeContext.Provider>
   );

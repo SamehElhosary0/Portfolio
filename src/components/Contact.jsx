@@ -16,11 +16,11 @@ const Contact = () => {
             borderColor: "var(--border-color, rgba(163,230,53,0.2))",
           }}
         >
-          <h2
-            className="heading-hover text-4xl font-bold text-center mb-10"
+                    <h2
+            className="text-4xl font-bold text-center mb-10"
             style={{ color: "var(--text-secondary, #e2e8f0)" }}
           >
-            Get In Touch
+            <span className="heading-hover">Get In Touch</span>
           </h2>
 
           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4">
